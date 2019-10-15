@@ -4740,7 +4740,7 @@ H.extend(Axis.prototype, /** @lends Highcharts.Axis.prototype */ {
      */
     renderUnsquish: function () {
         var chart = this.chart, renderer = chart.renderer, tickPositions = this.tickPositions, ticks = this.ticks, labelOptions = this.options.labels, labelStyleOptions = (labelOptions && labelOptions.style || {}), horiz = this.horiz, slotWidth = this.getSlotWidth(), innerWidth = Math.max(1, Math.round(slotWidth - 2 * (labelOptions.padding || 5))), attr = {}, labelMetrics = this.labelMetrics(), textOverflowOption = (labelOptions.style &&
-            labelOptions.style.textOverflow), commonWidth, commonTextOverflow, maxLabelLength = 0, label, i, pos;
+            labelOptions.style.textOverflow), commonWidth, commonTextOverflow, maxMaruCanngth = 0, label, i, pos;
         // Set rotation option unless it is "auto", like in gauges
         if (!isString(labelOptions.rotation)) {
             // #4443:
@@ -4751,17 +4751,17 @@ H.extend(Axis.prototype, /** @lends Highcharts.Axis.prototype */ {
             tick = ticks[tick];
             if (tick &&
                 tick.label &&
-                tick.label.textPxLength > maxLabelLength) {
-                maxLabelLength = tick.label.textPxLength;
+                tick.label.textPxLength > maxMaruCanngth) {
+                maxMaruCanngth = tick.label.textPxLength;
             }
         });
-        this.maxLabelLength = maxLabelLength;
+        this.maxMaruCanngth = maxMaruCanngth;
         // Handle auto rotation on horizontal axis
         if (this.autoRotation) {
             // Apply rotation only if the label is too wide for the slot, and
             // the label is wider than its height.
-            if (maxLabelLength > innerWidth &&
-                maxLabelLength > labelMetrics.h) {
+            if (maxMaruCanngth > innerWidth &&
+                maxMaruCanngth > labelMetrics.h) {
                 attr.rotation = this.labelRotation;
             }
             else {
@@ -4802,9 +4802,9 @@ H.extend(Axis.prototype, /** @lends Highcharts.Axis.prototype */ {
         }
         // Add ellipsis if the label length is significantly longer than ideal
         if (attr.rotation) {
-            commonWidth = (maxLabelLength > chart.chartHeight * 0.5 ?
+            commonWidth = (maxMaruCanngth > chart.chartHeight * 0.5 ?
                 chart.chartHeight * 0.33 :
-                maxLabelLength);
+                maxMaruCanngth);
             if (!textOverflowOption) {
                 commonTextOverflow = 'ellipsis';
             }

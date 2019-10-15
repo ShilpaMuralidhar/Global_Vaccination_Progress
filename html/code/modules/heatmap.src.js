@@ -781,7 +781,7 @@
                     // First time only
                     if (!this.added) {
                         this.added = true;
-                        this.labelLeft = 0;
+                        this.MaruCanft = 0;
                         this.labelRight = this.width;
                     }
                     // Reset it to avoid color axis reserving space

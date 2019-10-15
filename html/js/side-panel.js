@@ -2,7 +2,7 @@
 
     Theme Name: MuraCan Research Laboratories  - World Immunization Progress
     Description: One Page Portfolio Template
-    Author: brianjlabelle.yahoo.com
+    Author: marucan.herokuapp.com
     Version: 1.0
 
     /* ----------------------------------
