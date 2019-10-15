@@ -60,30 +60,46 @@ def names():
     # Return a list of the vaccine names
     return jsonify(list(vaccines))
 
-vaccine = "DTP1"
-@app.route("/metadata/<vaccine>")
-def vaccine_metadata(vaccine):
+@app.route("/countries")
+def countrynames():
+    """Return a list of countries."""
+
+    # Use Pandas to perform the sql query
+    stmt = db.session.query(Vaccines).statement
+    df = pd.read_sql_query(stmt, db.session.bind)
+    countries = df["Country"].unique()
+    # Return a list of the vaccine names
+    return jsonify(list(countries))
+
+# vaccine = "DTP1"
+@app.route("/metadata/<vaccine>/<country>")
+def vaccine_metadata(vaccine, country):
     """Return the MetaData for a given vaccine."""
+    print(vaccine)
+    print(country)
     sel = [
         Vaccines.Vaccine,
         Vaccines.Country,
         Vaccines.Year,
-        Vaccines.Coverage,
-
+        Vaccines.Coverage
     ]
 
-    results = db.session.query(*sel).filter(Vaccines.Vaccine == vaccine).all()
+    results = db.session.query(*sel).filter(Vaccines.Vaccine == vaccine).filter(Vaccines.Country == country).all()
+    print(results)
 
     # Create a dictionary entry for each row of metadata information
-    vaccine_metadata = {}
+    items = []
+    
     for result in results:
+        vaccine_metadata = {}
         vaccine_metadata["Vaccine"] = result[0]
         vaccine_metadata["Country"] = result[1]
         vaccine_metadata["Year"] = result[2]
         vaccine_metadata["Coverage"] = result[3]
+        items.append(vaccine_metadata)
 
-    print(vaccine_metadata)
-    return jsonify(vaccine_metadata)
+    # print(items)
+    return jsonify(items)
 
 
 # @app.route("/samples/<sample>")

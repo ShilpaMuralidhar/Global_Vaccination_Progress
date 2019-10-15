@@ -12,8 +12,13 @@
 <body>
 
   <h1>Hello World</h1>
-  
-
+  <h5>SELECT Vaccine:</h5>
+  <select id="selVaccine" onchange="vaxChanged(this.value)">
+  </select>
+  <h5>SELECT Country:</h5>
+  <select id="selCountry" onchange="countryChanged(this.value)">
+  </select>
+  <div id = "testchart"></div>
   <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
