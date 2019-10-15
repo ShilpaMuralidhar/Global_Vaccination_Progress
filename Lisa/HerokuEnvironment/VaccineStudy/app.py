@@ -28,20 +28,9 @@ Base = automap_base()
 # reflect the tables
 Base.prepare(db.engine, reflect=True)
 
-
-
 # Save references to each table
 Vaccines = Base.classes.wuenic
-
-
-# #     # Use Pandas to perform the sql query
-# stmt = db.session.query(Vaccines).statement
-# df = pd.read_sql_query(stmt, db.session.bind)
-# vac = df["Vaccine"].unique()
-# for v in vac:
-#     print(v)
-
-
+Life = Base.classes.infexpmort
 
 @app.route("/")
 def index():
@@ -71,36 +60,62 @@ def countrynames():
     # Return a list of the vaccine names
     return jsonify(list(countries))
 
-# vaccine = "DTP1"
 @app.route("/metadata/<vaccine>/<country>")
 def vaccine_metadata(vaccine, country):
     """Return the MetaData for a given vaccine."""
     print(vaccine)
     print(country)
-    sel = [
+    selVax = [
         Vaccines.Vaccine,
         Vaccines.Country,
         Vaccines.Year,
         Vaccines.Coverage
     ]
 
-    results = db.session.query(*sel).filter(Vaccines.Vaccine == vaccine).filter(Vaccines.Country == country).all()
-    print(results)
-
-    # Create a dictionary entry for each row of metadata information
-    items = []
+    resultsVax = db.session.query(*selVax).filter(Vaccines.Vaccine == vaccine).filter(Vaccines.Country == country).all()
     
-    for result in results:
+    # print(results)
+
+    # Create alist of dictionaries for each row of metadata information
+    vaxItems = []
+    
+    for result in resultsVax:
         vaccine_metadata = {}
         vaccine_metadata["Vaccine"] = result[0]
         vaccine_metadata["Country"] = result[1]
         vaccine_metadata["Year"] = result[2]
         vaccine_metadata["Coverage"] = result[3]
-        items.append(vaccine_metadata)
+        vaxItems.append(vaccine_metadata)
+
+    return jsonify(vaxItems)
+
+@app.route("/countrydata/<country>")
+def countrydata(country):
+    """Return the MetaData for a given vaccine."""
+
+    selLife = [
+        Life.County,
+        Life.Year,
+        Life.Life_Expectancy,
+        Life.Infant_Mortality
+    ]
+    resultsLife = db.session.query(*selLife).filter(Life.County == country).all()
+    
+    print(resultsLife)
+
+    # Create alist of dictionaries for each row of metadata information
+    lifeItems = []
+    
+    for result in resultsLife:
+        countrydata = {}
+        countrydata["Country"] = result[0]
+        countrydata["Year"] = result[1]
+        countrydata["Life_Expectancy"] = str(result[2])
+        countrydata["Infant_Mortality"] = str(result[3])
+        lifeItems.append(countrydata)
 
     # print(items)
-    return jsonify(items)
-
+    return jsonify(lifeItems)
 
 # @app.route("/samples/<sample>")
 # def samples(sample):
