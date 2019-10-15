@@ -18,7 +18,7 @@ app = Flask(__name__)
 # Database Setup
 #################################################
 
-postgresURI = "postgres://eipxrnyyfzxwaw:c6010b4484061cee249bf65c4a64caa7d7733658c9d657fafd862df5144396ba@ec2-54-197-238-238.compute-1.amazonaws.com:5432/dao897d7756ela"
+postgresURI = "postgres://trszpzmvozxxfa:4837915234eabffbb990eda4721662850ebcf9e07fc119c3fe994db385f04f6f@ec2-54-83-33-14.compute-1.amazonaws.com:5432/dcnno5op1g262"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = postgresURI
 db = SQLAlchemy(app)
