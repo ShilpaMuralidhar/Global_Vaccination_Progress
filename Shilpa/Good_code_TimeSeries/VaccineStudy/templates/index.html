@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Flask Plotlyjs Example</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <h1>Hello World</h1>
+  <h5>SELECT Vaccine:</h5>
+  <select id="selVaccine" onchange="vaxChanged(this.value)">
+      <!-- <option value="dataset1">BCG</option>
+      <option value="dataset2">DPT1</option>
+      <option value="dataset3">DPT3</option>
+      <option value="dataset4">HEPB3</option>
+      <option value="dataset5">HEPBB</option>
+      <option value="dataset6">HIB</option>
+      <option value="dataset7">MCV1</option>
+      <option value="dataset8">MCV2</option>
+      <option value="dataset9">PCV3</option>
+      <option value="dataset10">POL3</option>
+      <option value="dataset11">RCV1</option>
+      <option value="dataset12">ROTAC</option>
+      <option value="dataset13">YFV</option> -->
+  </select>
+  <h5>SELECT Country:</h5>
+  <select id="selCountry" onchange="countryChanged(this.value)">
+      <!-- <option value="dataset1">Afghanistan</option>
+      <option value="dataset2">Armenia</option>
+      <option value="dataset3">Albania</option>
+      <option value="dataset4">Algeria</option>
+      <option value="dataset5">Angola</option> -->
+
+  </select>
+  <div id = "testchart"></div>
+  <!-- <script src="https://cdn.plot.ly/plotly-1.31.2.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="{{ url_for('static', filename='js/bonus.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vaccine</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+  
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div id="container1"></div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+// <div style="width: 800px; margin: 2em auto; padding: 1em; border: 1px solid red; border-radius: 0.5em">
+// 	NOTE: This demo shows a way loading the highcharts data from a csv file using the highcharts data module.
+// 	<a href="http://api.highcharts.com/#data">Data module</a>.
+// 	</div>
+    // <div id="container1" style="height: 400px"></div>
+        // <script type="text/javascript">
+			$(function () {
+				$.get('vaccine_stack.csv', function(data) {
+				 $('#container1').highcharts({
+							chart: {
+								type: "column"
+							},
+							title: {
+								text: "Fruit Consumtion"
+							},
+							xAxis: {
+								categories: []
+							},
+							yAxis: {
+								title: {
+									text: "Number of students"
+								}
+							},
+							data: {
+								csv: data
+								//csv: document.getElementById('csv').innerHTML
+							},
+							plotOptions: {
+								series: {
+									marker: {
+										enabled: false
+									}
+								}
+							}
+					});
+				});
+			});
+</script> 
+<!-- --> -->
+
+    
+</body>
+</html>
