@@ -20,8 +20,8 @@ function buildCharts(vax, country) {
      for (i = 0; i < selection.length;i++) {
        year.push(selection[i].Year);
        coverage.push(selection[i].Coverage);
-
     }
+
     // console.log("buildCharts, data from url: "+(selection));
     // console.log("buildCharts, data from url: "+selection[0].Country);
     // console.log("buildCharts year: " +year);
@@ -36,6 +36,7 @@ function buildCharts(vax, country) {
     }
     Plotly.newPlot("vaxChart",vaxPlot,layout);
   });
+
   d3.json(urlLife).then(function(selection) {
     var year = [];
     var lifeExp = [];
@@ -66,6 +67,61 @@ function buildCharts(vax, country) {
   });
 
 }
+
+
+function regression(vax, country) {
+  var urlReg = "/regression/"+vax +"/"+country;
+  d3.json(urlReg).then(function(reg_result) {
+    var vax_cov = reg_result.vax_cov;
+    var life_exp = reg_result.life_exp;
+    var inf_mort = reg_result.int_mort;
+    var fit_string_life = `Life Expectancy = ${life_int} + ${life_slope}*Vaccination Coverage`;
+    var fit_string_life_short = `L = ${life_int} + ${life_slope}*VC`;
+    var fit_string_inf = `Infant Mortality = ${inf_int} + ${inf_slope}*Vaccination Coverage`;
+    var fit_string_inf_short = `I = ${inf_int} + ${inf_slope}*VC`;
+    var life_fit = reg_result.life_fit;
+    var inf_fit = reg_result.inf_fit;
+    var life_exp = reg_result.life_exp;
+    var inf_mort = reg_result.inf_mort;
+
+    var trace_life = { 
+      x: vax_cov,
+      y: life_exp,    
+      mode: "markers"
+      }
+    var trace_life_fit = { 
+      x: vax_cov,
+      y: life_fit,
+      mode: "lines" 
+
+    }
+    var trace_inf = { 
+      x: vax_cov,
+      y: inf_mort,
+      mode: "markers"    
+    }
+    var trace_inf_fit = { 
+    x: vax_cov,
+    y: inf_fit,
+    mode: "lines"    
+    }
+
+    lifeVaxPlot = [trace_life,trace_life_fit];
+    var layout_life = {
+      xaxis: {title:"Vaccination Coverage"},
+      yaxis: {title:"Life Expectancy"}
+    }
+    lifeInfPlot = [trace_inf,trace_inf_fit];
+    var layout_inf = {
+      xaxis: {title:"Vaccination Coverage"},
+      yaxis: {title:"Infant Mortality"}
+    }
+    Plotly.newPlot("lifeRegression",lifeVaxPlot,layout_life);
+    Plotly.newPlot("infRegression",lifeVaxPlot,layout_life);
+
+});
+  
+} 
 
 function init() {
   // Grab a reference to the dropdown select element

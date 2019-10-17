@@ -10,6 +10,7 @@ from sqlalchemy import create_engine
 
 from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
+# import VaxRegression
 
 app = Flask(__name__)
 
@@ -28,7 +29,7 @@ Base = automap_base()
 # reflect the tables
 Base.prepare(db.engine, reflect=True)
 
-# Save references to each table
+# Save references to each table #
 Vaccines = Base.classes.wuenic
 Life = Base.classes.infexpmort
 
@@ -94,12 +95,12 @@ def countrydata(country):
     """Return the MetaData for a given vaccine."""
 
     selLife = [
-        Life.County,
+        Life.Country,
         Life.Year,
         Life.Life_Expectancy,
         Life.Infant_Mortality
     ]
-    resultsLife = db.session.query(*selLife).filter(Life.County == country).all()
+    resultsLife = db.session.query(*selLife).filter(Life.Country == country).all()
     
     print(resultsLife)
 
@@ -116,27 +117,6 @@ def countrydata(country):
 
     # print(items)
     return jsonify(lifeItems)
-
-# @app.route("/samples/<sample>")
-# def samples(sample):
-#     """Return `otu_ids`, `otu_labels`,and `sample_values`."""
-#     stmt = db.session.query(Samples).statement
-#     df = pd.read_sql_query(stmt, db.session.bind)
-
-#     # Filter the data based on the sample number and
-#     # only keep rows with values above 1
-#     sample_data = df.loc[df[sample] > 1, ["otu_id", "otu_label", sample]]
-
-#     # Sort by sample
-#     sample_data.sort_values(by=sample, ascending=False, inplace=True)
-
-#     # Format the data to send as json
-#     data = {
-#         "otu_ids": sample_data.otu_id.values.tolist(),
-#         "sample_values": sample_data[sample].values.tolist(),
-#         "otu_labels": sample_data.otu_label.tolist(),
-#     }
-#     return jsonify(data)
 
 
 if __name__ == "__main__":
