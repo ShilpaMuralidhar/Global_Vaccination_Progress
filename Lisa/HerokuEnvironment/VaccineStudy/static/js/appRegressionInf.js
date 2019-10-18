@@ -1,81 +1,15 @@
 
 //builds plots of regression analysis
 function regressionChart(vaccine, country) {
-  var urlReg = "/regression/"+vaccine+"/"+country;
-  // console.log("regression url " +urlReg);
+  var urlReg = "/regression/infantmortality/"+vaccine+"/"+country;
   d3.json(urlReg).then(function(reg_result) {
-    // console.log("in regresion, reg_result: "+regression_result);
-    // console.log("in regresion, vax_cov: "+regression_result.vax_cov)
     var vax_cov = reg_result.vax_cov;
-    var life_exp = reg_result.life_exp;
     var inf_mort = reg_result.int_mort;
-    var fit_string_life = `Life Expectancy = ${reg_result.life_int.toFixed(2)} + ${reg_result.life_slope}*Vaccination Coverage`;
-    var fit_string_life_short = `L = ${reg_result.life_int.toFixed(2)} + ${reg_result.life_slope.toFixed(2)}*VC`;
     var fit_string_inf = `Infant Mortality = ${reg_result.inf_int} + ${reg_result.inf_slope}*Vaccination Coverage`;
     var fit_string_inf_short = `I = ${reg_result.inf_int.toFixed(2)} + ${reg_result.inf_slope.toFixed(2)}*VC`;
-    var life_fit = reg_result.life_fit;
     var inf_fit = reg_result.inf_fit;
-    var life_exp = reg_result.life_exp;
     var inf_mort = reg_result.inf_mort;
-    var life_resid = reg_result.life_resid;
     var inf_resid = reg_result.inf_resid;
-
-    // life expectancy regression fit plot
-    var trace_life = { 
-      x: vax_cov,
-      y: life_exp,    
-      mode: "markers",
-      name: "Observed Life Expectancy"
-      }
-    var trace_life_fit = { 
-      x: vax_cov,
-      y: life_fit,
-      mode: "lines",
-      name: fit_string_life_short 
-
-    }
-    lifeVaxPlot = [trace_life,trace_life_fit];
-    var layout_life = {
-      title: "Life Expectancy Liean Regression Fit",
-      xaxis: {title:"Vaccination Coverage"},
-      yaxis: {title:"Life Expectancy"}
-    }
-    Plotly.newPlot("lifeRegression",lifeVaxPlot,layout_life);
-
-    //life Expectancy residual plot 
-    var trace_life_resid = { 
-      x: life_resid,
-      y: life_fit,    
-      mode: "markers"
-      }
-    lifeResidPlot = [trace_life_resid];
-    var layout_lifeResid = {
-      title:"Life Expectancy Residual Plot",
-      xaxis: {title:"Residuals(Observed -Predicted) "},
-      yaxis: {title:"Predicted Life Expectancy"}
-    }
-    Plotly.newPlot("lifeResid",lifeResidPlot,layout_lifeResid);
-    
-    // life expectancy qq plot
-    var trace_life_qq = { 
-      x: reg_result.osm_qq_life,
-      y: reg_result.osr_qq_life,    
-      mode: "markers",
-      name: "Quantiles"
-      }
-    var trace_life_fit_qq = { 
-      x: reg_result.osm_qq_life,
-      y: reg_result.qq_fit_life,
-      mode: "lines" ,
-      name: "Least Squares Fit"
-    }
-    lifeQQPlot = [trace_life_qq,trace_life_fit_qq];
-    var layout_life_qq = {
-      title: "Life Expectancy Normal Q-Q Plot",
-      xaxis: {title:"Theoretical Quantiles"},
-      yaxis: {title:"Sample Quantiles"}
-    }
-    Plotly.newPlot("lifeQQ",lifeQQPlot,layout_life_qq);
 
     // Infant mortality regression fit plot
     var trace_inf = { 
@@ -113,9 +47,6 @@ function regressionChart(vaccine, country) {
       yaxis: {title:"Predicted Infant Mortality"}
     }
     Plotly.newPlot("infResid",infResidPlot,layout_infResid);
-
-
-
 
         // inf qq plot
         var trace_inf_qq = { 
@@ -169,7 +100,6 @@ function init() {
     });
     // // Use the first sample from the list to build the initial plots
     const firstCountry = countries[0]; 
-    // console.log("First Country ", firstCountry);
     currentCountry = firstCountry;
   regressionChart(currentVax, currentCountry);
 });
