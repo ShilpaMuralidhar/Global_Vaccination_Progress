@@ -34,10 +34,17 @@ Base.prepare(db.engine, reflect=True)
 Vaccines = Base.classes.wuenic
 Life = Base.classes.infexpmort
 
+
+
 @app.route("/")
 def index():
     """Return the homepage."""
     return render_template("index.html")
+
+@app.route("/charts-trends")
+def chartstrends():
+    """Return the homepage."""
+    return render_template("index_charts_trends.html")
 
 
 @app.route("/vaccine_names")
@@ -119,14 +126,18 @@ def countrydata(country):
     # print(items)
     return jsonify(lifeItems)
 
+@app.route("/charts-life")
+def chartslife():
+    """Return the homepage."""
+    return render_template("index_charts_life.html")
 
 #create route for regression data
-@app.route("/regression/<vaccine>/<country>")
-def regressionfit(vaccine, country):
-    """Returns the fit of life expectancy and infant mortality."""
+@app.route("/regression/lifeexpectancy/<vaccine>/<country>")
+def regressionlifefit(vaccine, country):
+    """Returns the fit of life expectancy."""
 
     #pull and merge vaccination and life expectancy data
-    sel = [Life.Country, Life.Year, Life.Index, Life.Life_Expectancy, Life.Infant_Mortality, 
+    sel = [Life.Country, Life.Year, Life.Index, Life.Life_Expectancy, 
     Vaccines.Vaccine, Vaccines.Life_Index, Vaccines.Index, Vaccines.Coverage]
 
     session =Session(db.engine)
@@ -137,7 +148,6 @@ def regressionfit(vaccine, country):
     countryTup = []
     yearTup = []
     lifExpTup = []
-    infMortTup = []
     vaxTup = []
     covTup = []
     for tup in Vax_life:
@@ -147,16 +157,15 @@ def regressionfit(vaccine, country):
             lifExpTup.append(np.nan)
         else:
             lifExpTup.append(float(str(tup[3])))
-        if str(tup[4]) == 'None':
-            infMortTup.append(np.nan)
-        else:
-            infMortTup.append(float(str(tup[4])))
-        vaxTup.append(tup[5])
-        if str(tup[8]) == 'None':
+        vaxTup.append(tup[4])
+        if str(tup[7]) == 'None':
             covTup.append(np.nan)
         else:
-            covTup.append(float(str(tup[8])))
-    tup_df = pd.DataFrame(zip(countryTup, yearTup, lifExpTup, infMortTup, vaxTup, covTup), columns = ["Country","Year","Life_Expectancy","Infant_Mortality","Vaccine","Coverage"])
+            covTup.append(float(str(tup[7])))
+    tup_df = pd.DataFrame(zip(countryTup, yearTup, lifExpTup, vaxTup, covTup), columns = ["Country","Year","Life_Expectancy","Vaccine","Coverage"])
+
+    # country = "Afghanistan"
+    # vax = "BCG"
 
     #filter the data on selected country and vaccination
     vax_life_country = tup_df[tup_df["Country"] == country]
@@ -166,7 +175,6 @@ def regressionfit(vaccine, country):
 
     #define series for regresion analysis
     life_exp = vax_life_country_vax["Life_Expectancy"]
-    inf_mort = vax_life_country_vax["Infant_Mortality"]
     vax_cov = vax_life_country_vax["Coverage"]
 
     #regress life_exp = m*vax_cov + b
@@ -174,26 +182,15 @@ def regressionfit(vaccine, country):
         vax_cov, life_exp)
     life_fit = life_slope * vax_cov + life_int
     life_resid = life_exp - life_fit
+    #get residuals
     (osm_qq_life,osr_qq_life),(slope_qq_life, int_qq_life, r_qq_life)  = stats.probplot(life_exp)
+    #normal quantile fit
     qq_fit_life = slope_qq_life*osm_qq_life+int_qq_life
-
-
-
-    #regress inf_mort = m*vax_cov + b
-    inf_slope,inf_int, inf_r, inf_p, inf_std_err = stats.linregress(
-        vax_cov, inf_mort)
-    inf_fit = inf_slope * vax_cov + inf_int
-    inf_resid = inf_mort- inf_fit
-
-    (osm_qq_inf,osr_qq_inf),(slope_qq_inf, int_qq_inf, r_qq_inf)  = stats.probplot(inf_mort)
-    qq_fit_inf = slope_qq_inf*osm_qq_inf+int_qq_inf
-
 
     #collect regression results in a dictionary
     result = {
     "vax_cov": vax_cov.to_list(),
     "life_exp": life_exp.to_list(),
-    "inf_mort": inf_mort.to_list(),
     "life_slope": life_slope, 
     "life_int": life_int, 
     "life_r": life_r, 
@@ -207,6 +204,70 @@ def regressionfit(vaccine, country):
     "int_qq_life": int_qq_life,
     "r_qq_life": r_qq_life,
     "qq_fit_life": qq_fit_life.tolist(),
+   }
+    return jsonify(result)
+
+@app.route("/charts-infant")
+def chartsinfant():
+    """Return the homepage."""
+    return render_template("index_charts_infant.html")
+
+@app.route("/regression/infantmortality/<vaccine>/<country>")
+def regressioninffit(vaccine, country):
+    """Returns the fit of life infant mortality."""
+
+    #pull and merge vaccination and life expectancy data
+    sel = [Life.Country, Life.Year, Life.Index, Life.Infant_Mortality, 
+    Vaccines.Vaccine, Vaccines.Life_Index, Vaccines.Index, Vaccines.Coverage]
+
+    session =Session(db.engine)
+    Vax_inf = session.query(*sel).filter(Vaccines.Life_Index == Life.Index).all()
+    session.close()
+
+    #organize the list of tuples into a collection of list an zip into a dataframe
+    countryTup = []
+    yearTup = []
+    infMortTup = []
+    vaxTup = []
+    covTup = []
+    for tup in Vax_inf:
+        countryTup.append(tup[0])
+        yearTup.append(tup[1])
+        if str(tup[3]) == 'None':
+            infMortTup.append(np.nan)
+        else:
+            infMortTup.append(float(str(tup[3])))
+        vaxTup.append(tup[4])
+        if str(tup[7]) == 'None':
+            covTup.append(np.nan)
+        else:
+            covTup.append(float(str(tup[7])))
+    tup_df = pd.DataFrame(zip(countryTup, yearTup, infMortTup, vaxTup, covTup), columns = ["Country","Year","Infant_Mortality","Vaccine","Coverage"])
+
+    #filter the data on selected country and vaccination
+    vax_inf_country = tup_df[tup_df["Country"] == country]
+    vax_inf_country_vax = vax_inf_country[vax_inf_country["Vaccine"] == vaccine]
+    #remove missing data
+    vax_inf_country_vax = vax_inf_country_vax.dropna()
+
+    #define series for regresion analysis
+    inf_mort = vax_inf_country_vax["Infant_Mortality"]
+    vax_cov = vax_inf_country_vax["Coverage"]
+
+    #regress inf_mort = m*vax_cov + b
+    inf_slope,inf_int, inf_r, inf_p, inf_std_err = stats.linregress(
+        vax_cov, inf_mort)
+    inf_fit = inf_slope * vax_cov + inf_int
+    inf_resid = inf_mort- inf_fit
+    #get residuals
+    (osm_qq_inf,osr_qq_inf),(slope_qq_inf, int_qq_inf, r_qq_inf)  = stats.probplot(inf_mort)
+    #fit normal quantiles
+    qq_fit_inf = slope_qq_inf*osm_qq_inf+int_qq_inf
+ 
+    #collect regression results in a dictionary
+    result = {
+    "vax_cov": vax_cov.to_list(),
+    "inf_mort": inf_mort.to_list(),
     "inf_slope": inf_slope, 
     "inf_int": inf_int, 
     "inf_r": inf_r, 
@@ -220,7 +281,9 @@ def regressionfit(vaccine, country):
     "int_qq_inf": int_qq_inf,
     "r_qq_inf": r_qq_inf,
     "qq_fit_inf": qq_fit_inf.tolist()}
+
     return jsonify(result)
+
 
 if __name__ == "__main__":
     #when you upload to heroku, take out debug

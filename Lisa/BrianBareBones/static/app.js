@@ -1,9 +1,14 @@
+// JUST USED AS A PLACE HOLDER FOR NOW: GOOD LUCK
+
+
 
 //build charts for trends over time plots
 function buildCharts(vax, country) {
   //url for the sample
   var urlVax = "/metadata/"+vax +"/"+country;
   var urlLife= "/countrydata/"+country;
+  // console.log("buildCharts, vax:" +vax+"country:" +country);
+  // console.log("URL: "+url);
   d3.json(urlVax).then(function(selection) {
     var year = [];
     var coverage = [];
@@ -11,13 +16,16 @@ function buildCharts(vax, country) {
        year.push(selection[i].Year);
        coverage.push(selection[i].Coverage);
     }
+
+    // console.log("buildCharts, data from url: "+(selection));
+    // console.log("buildCharts, data from url: "+selection[0].Country);
+    // console.log("buildCharts year: " +year);
     traceVax = {
       x: year,
       y: coverage
     }
     vaxPlot = [traceVax];
     var layout = {
-      title: "Vaccination Coverage",
       xaxis: {title:"Year"},
       yaxis: {title:"Coverage"}
     }
@@ -33,30 +41,22 @@ function buildCharts(vax, country) {
        lifeExp.push(parseFloat(selection[i].Life_Expectancy));
        infMort.push(parseFloat(selection[i].Infant_Mortality));
     }
-
+    // console.log("buildCharts, urlLife, infMort: "+infMort);
+    // console.log("buildCharts, urlLife, lifeExp: "+lifeExp);
+    // console.log("buildCharts, urlLife, selection.Life:"+selection.Life_Expectancy)
     traceLife = {
       x: year,
-      y: lifeExp,
-      name: "Life Expectancy"
+      y: lifeExp
     }
     traceInf = {
       x: year,
-      y:infMort,
-      yaxis: 'y2',
-      name: "Infant Mortality"
+      y:infMort
     }
     lifePlot = [traceLife,traceInf];
     var layout = {
-      title: "Life Expectancy and Infant Mortality",
-      margin: {
-        l: 50, r: 100, b: 50, t: 50, pad: 2
-      },
       xaxis: {title:"Year"},
       yaxis: {title:"Life Expectancy"},
-      yaxis2: {
-        title:"Infant Mortality",
-        overlaying: 'y',
-        side: 'right'}
+      yaxis2: {title:"Infant Mortality"}
     }
     Plotly.newPlot("lifeChart",lifePlot,layout);
   });
@@ -66,7 +66,10 @@ function buildCharts(vax, country) {
 //builds plots of regression analysis
 function regressionChart(vaccine, country) {
   var urlReg = "/regression/"+vaccine+"/"+country;
+  // console.log("regression url " +urlReg);
   d3.json(urlReg).then(function(reg_result) {
+    // console.log("in regresion, reg_result: "+regression_result);
+    // console.log("in regresion, vax_cov: "+regression_result.vax_cov)
     var vax_cov = reg_result.vax_cov;
     var life_exp = reg_result.life_exp;
     var inf_mort = reg_result.int_mort;

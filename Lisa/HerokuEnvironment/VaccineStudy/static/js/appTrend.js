@@ -65,7 +65,6 @@ function buildCharts(vax, country) {
         title:"Infant Mortality",
         overlaying: 'y',
         side: 'right'}
-      // legend: {orientation = "h"}
       }
     Plotly.newPlot("lifeChart",lifePlot,layout);
   });

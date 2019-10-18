@@ -63,23 +63,66 @@ function buildCharts(vax, country) {
 
 }
 
+function initTrend() {
+  // Grab a reference to the dropdown select element
+  var selectorVaccine = d3.select("#selTrendVaccine");
+  // Use the list of vaccine names to populate the select options
+  d3.json("/vaccine_names").then((vaccines) => {
+    vaccines.forEach((Vaccine) => {
+      selectorVaccine
+        .append("option")       
+        .text(Vaccine)
+        .property("value", Vaccine);
+    });
+    // // Use the first country/vaccine from the list to build the initial plots
+    const firstTrendVax = vaccines[0];
+    currentTrendVax = firstTrendVax;
+  
+  var selectorCountry = d3.select("#selTrendCountry");
+
+  // Use the list of countries to populate the select options
+  d3.json("/countries").then((countries) => {
+    countries.forEach((Country) => {
+      selectorCountry
+        .append("option")       
+        .property("value", Country)
+        .text(Country);
+    });
+    // // Use the first sample from the list to build the initial plots
+    const firstTrendCountry = countries[0]; 
+    // console.log("First Country ", firstCountry);
+    currentTrendCountry = firstTrendCountry;
+    // console.log("inside current country "+currentCountry)
+  buildCharts(currentTrendVax, currentTrendCountry);
+});
+});
+}
+
+function vaxChanged(newVax) {
+  //   // Fetch new data each time a new sample is selected 
+    currentTrendVax = newVax;
+    console.log("Function vaxChanged, newVax: "+newVax)
+    buildCharts(newVax, currentTrendCountry);
+  }
+  
+  function countryChanged(newCountry){
+    console.log("Function countryChanged, newCountry: "+newCountry)
+    currentTrendCountry = newCountry;
+    buildCharts(currentTrendVax, newCountry);
+  }
+
 //builds plots of regression analysis
-function regressionChart(vaccine, country) {
-  var urlReg = "/regression/"+vaccine+"/"+country;
+function regressionLifeChart(vaccine, country) {
+  var urlReg = "/regression/lifeexpectancy/"+vaccine+"/"+country;
   d3.json(urlReg).then(function(reg_result) {
+ 
     var vax_cov = reg_result.vax_cov;
     var life_exp = reg_result.life_exp;
-    var inf_mort = reg_result.int_mort;
-    var fit_string_life = `Life Expectancy = ${reg_result.life_int} + ${reg_result.life_slope}*Vaccination Coverage`;
-    var fit_string_life_short = `L = ${reg_result.life_int} + ${reg_result.life_slope}*VC`;
-    var fit_string_inf = `Infant Mortality = ${reg_result.inf_int} + ${reg_result.inf_slope}*Vaccination Coverage`;
-    var fit_string_inf_short = `I = ${reg_result.inf_int} + ${reg_result.inf_slope}*VC`;
+    // var fit_string_life = `Life Expectancy = ${reg_result.life_int.toFixed(2)} + ${reg_result.life_slope}*Vaccination Coverage`;
+    var fit_string_life_short = `L = ${reg_result.life_int.toFixed(2)} + ${reg_result.life_slope.toFixed(2)}*VC`;
     var life_fit = reg_result.life_fit;
-    var inf_fit = reg_result.inf_fit;
     var life_exp = reg_result.life_exp;
-    var inf_mort = reg_result.inf_mort;
     var life_resid = reg_result.life_resid;
-    var inf_resid = reg_result.inf_resid;
 
     // life expectancy regression fit plot
     var trace_life = { 
@@ -97,7 +140,7 @@ function regressionChart(vaccine, country) {
     }
     lifeVaxPlot = [trace_life,trace_life_fit];
     var layout_life = {
-      title: "Life Expectancy Liean Regression Fit",
+      title: "Life Expectancy Linear Regression Fit",
       xaxis: {title:"Vaccination Coverage"},
       yaxis: {title:"Life Expectancy"}
     }
@@ -137,6 +180,67 @@ function regressionChart(vaccine, country) {
       yaxis: {title:"Sample Quantiles"}
     }
     Plotly.newPlot("lifeQQ",lifeQQPlot,layout_life_qq);
+  });
+} 
+
+function initLife() {
+  // Grab a reference to the dropdown select element
+  var selectorVaccine = d3.select("#selLifeVaccine");
+  // Use the list of vaccine names to populate the select options
+  d3.json("/vaccine_names").then((vaccines) => {
+    vaccines.forEach((Vaccine) => {
+      selectorVaccine
+        .append("option")       
+        .text(Vaccine)
+        .property("value", Vaccine);
+    });
+    // // Use the first country/vaccine from the list to build the initial plots
+    const firstLifeVax = vaccines[0];
+    currentLifeVax = firstLifeVax;
+  
+  var selectorCountry = d3.select("#selLifeCountry");
+
+  // Use the list of countries to populate the select options
+  d3.json("/countries").then((countries) => {
+    countries.forEach((Country) => {
+      selectorCountry
+        .append("option")       
+        .property("value", Country)
+        .text(Country);
+    });
+    // // Use the first sample from the list to build the initial plots
+    const firstLifeCountry = countries[0]; 
+    // console.log("First Country ", firstCountry);
+    currentLifeCountry = firstLifeCountry;
+    // console.log("inside current country "+currentCountry)
+  regressionLifeChart(currentLifeVax, currentLifeCountry);
+});
+});
+}
+
+function vaxLifeChanged(newVax) {
+//   // Fetch new data each time a new sample is selected 
+  currentLifeVax = newVax;
+  console.log("Function vaxChanged, newVax: "+newVax)
+  regressionLifeChart(currentLifeVax, currentLifeCountry);
+}
+
+function countryLifeChanged(newCountry){
+  console.log("Function countryChanged, newCountry: "+newCountry)
+  currentLifeCountry = newCountry;
+  regressionLifeChart(currentLifeVax, currentLifeCountry);
+}
+
+function regressionInfChart(vaccine, country) {
+  var urlReg = "/regression/infantmortality/"+vaccine+"/"+country;
+  d3.json(urlReg).then(function(reg_result) {
+    var vax_cov = reg_result.vax_cov;
+    var inf_mort = reg_result.int_mort;
+    var fit_string_inf = `Infant Mortality = ${reg_result.inf_int} + ${reg_result.inf_slope}*Vaccination Coverage`;
+    var fit_string_inf_short = `I = ${reg_result.inf_int.toFixed(2)} + ${reg_result.inf_slope.toFixed(2)}*VC`;
+    var inf_fit = reg_result.inf_fit;
+    var inf_mort = reg_result.inf_mort;
+    var inf_resid = reg_result.inf_resid;
 
     // Infant mortality regression fit plot
     var trace_inf = { 
@@ -175,9 +279,6 @@ function regressionChart(vaccine, country) {
     }
     Plotly.newPlot("infResid",infResidPlot,layout_infResid);
 
-
-
-
         // inf qq plot
         var trace_inf_qq = { 
           x: reg_result.osm_qq_inf,
@@ -203,9 +304,10 @@ function regressionChart(vaccine, country) {
   
 } 
 
-function init() {
+
+function initInf() {
   // Grab a reference to the dropdown select element
-  var selectorVaccine = d3.select("#selVaccine");
+  var selectorVaccine = d3.select("#selInfVaccine");
   // Use the list of vaccine names to populate the select options
   d3.json("/vaccine_names").then((vaccines) => {
     vaccines.forEach((Vaccine) => {
@@ -215,10 +317,10 @@ function init() {
         .property("value", Vaccine);
     });
     // // Use the first country/vaccine from the list to build the initial plots
-    const firstVax = vaccines[0];
-    currentVax = firstVax;
+    const firstInfVax = vaccines[0];
+    currentVax = firstInfVax;
   
-  var selectorCountry = d3.select("#selCountry");
+  var selectorCountry = d3.select("#selInfCountry");
 
   // Use the list of countries to populate the select options
   d3.json("/countries").then((countries) => {
@@ -229,34 +331,37 @@ function init() {
         .text(Country);
     });
     // // Use the first sample from the list to build the initial plots
-    const firstCountry = countries[0]; 
+    const firstInfCountry = countries[0]; 
     // console.log("First Country ", firstCountry);
-    currentCountry = firstCountry;
+    currentInfCountry = firstInfCountry;
     // console.log("inside current country "+currentCountry)
-  buildCharts(currentVax, currentCountry);
-  regressionChart(currentVax, currentCountry);
+  regressionInfChart(currentInfVax, currentInfCountry);
 });
 });
 }
 
-function vaxChanged(newVax) {
+function vaxInfChanged(newVax) {
 //   // Fetch new data each time a new sample is selected 
-  currentVax = newVax;
+  currentInfVax = newVax;
   console.log("Function vaxChanged, newVax: "+newVax)
-  buildCharts(newVax, currentCountry);
-  regressionChart(currentVax, currentCountry);
+  regressionLifeChart(currentInfVax, currentInfCountry);
 }
 
-function countryChanged(newCountry){
+function countryInfChanged(newCountry){
   console.log("Function countryChanged, newCountry: "+newCountry)
-  currentCountry = newCountry;
-  buildCharts(currentVax, newCountry);
-  regressionChart(currentVax, currentCountry);
+  currentInfCountry = newCountry;
+  regressionInfChart(currentInfVax, currentInfCountry);
 }
 
-var currentCountry = "";
-var currentVax = "";
+var currentTrendCountry = "";
+var currentTrendVax = "";
+var currentLifeCountry = "";
+var currentLifeVax = "";
+var currentInfCountry = "";
+var currentInfVax = "";
 // Initialize the dashboard
-init();
+initTrend();
+initLife();
+InitInf();
 
 
