@@ -18,7 +18,7 @@
   <h5>SELECT Country:</h5>
   <select id="selCountry" onchange="countryChanged(this.value)">
   </select>
-  <!-- This goes in trends over time.  vax in top, life on bottom -->
+  This goes in trends over time.  vax in top, life on bottom
   <div id = "vaxChart"></div>
   <div id = "lifeChart"></div>
   <!-- This goes in Regression analysis for Life Expenctancy  -->
@@ -37,8 +37,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src='https://unpkg.com/simple-statistics@7.0.2/dist/simple-statistics.min.js'></script>
-  <script src="{{ url_for('static', filename='js/bonus.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <!-- <script src="{{ url_for('static', filename='js/bonus.js') }}"></script> -->
+  <script src="{{ url_for('static', filename='js/appRegression.js') }}"></script>
   
   
 </body>

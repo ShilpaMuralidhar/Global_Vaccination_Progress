@@ -37,7 +37,7 @@ Life = Base.classes.infexpmort
 @app.route("/")
 def index():
     """Return the homepage."""
-    return render_template("index.html")
+    return render_template("indexRegression.html")
 
 
 @app.route("/vaccine_names")
@@ -76,8 +76,6 @@ def vaccine_metadata(vaccine, country):
 
     resultsVax = db.session.query(*selVax).filter(Vaccines.Vaccine == vaccine).filter(Vaccines.Country == country).all()
     
-    # print(results)
-
     # Create alist of dictionaries for each row of metadata information
     vaxItems = []
     
@@ -91,9 +89,10 @@ def vaccine_metadata(vaccine, country):
 
     return jsonify(vaxItems)
 
+#gets life expectancy and infant mortality data for selected country
 @app.route("/countrydata/<country>")
 def countrydata(country):
-    """Return the MetaData for a given vaccine."""
+    """Return the MetaData for a given country."""
 
     selLife = [
         Life.Country,
@@ -103,8 +102,6 @@ def countrydata(country):
     ]
     resultsLife = db.session.query(*selLife).filter(Life.Country == country).all()
     
-    # print(resultsLife)
-
     # Create alist of dictionaries for each row of metadata information
     lifeItems = []
     

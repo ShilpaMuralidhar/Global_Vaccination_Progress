@@ -1,65 +1,4 @@
 
-//build charts for trends over time plots
-function buildCharts(vax, country) {
-  //url for the sample
-  var urlVax = "/metadata/"+vax +"/"+country;
-  var urlLife= "/countrydata/"+country;
-  // console.log("buildCharts, vax:" +vax+"country:" +country);
-  // console.log("URL: "+url);
-  d3.json(urlVax).then(function(selection) {
-    var year = [];
-    var coverage = [];
-     for (i = 0; i < selection.length;i++) {
-       year.push(selection[i].Year);
-       coverage.push(selection[i].Coverage);
-    }
-
-    // console.log("buildCharts, data from url: "+(selection));
-    // console.log("buildCharts, data from url: "+selection[0].Country);
-    // console.log("buildCharts year: " +year);
-    traceVax = {
-      x: year,
-      y: coverage
-    }
-    vaxPlot = [traceVax];
-    var layout = {
-      xaxis: {title:"Year"},
-      yaxis: {title:"Coverage"}
-    }
-    Plotly.newPlot("vaxChart",vaxPlot,layout);
-  });
-
-  d3.json(urlLife).then(function(selection) {
-    var year = [];
-    var lifeExp = [];
-    var infMort = [];
-     for (i = 0; i < selection.length;i++) {
-       year.push(selection[i].Year);
-       lifeExp.push(parseFloat(selection[i].Life_Expectancy));
-       infMort.push(parseFloat(selection[i].Infant_Mortality));
-    }
-    // console.log("buildCharts, urlLife, infMort: "+infMort);
-    // console.log("buildCharts, urlLife, lifeExp: "+lifeExp);
-    // console.log("buildCharts, urlLife, selection.Life:"+selection.Life_Expectancy)
-    traceLife = {
-      x: year,
-      y: lifeExp
-    }
-    traceInf = {
-      x: year,
-      y:infMort
-    }
-    lifePlot = [traceLife,traceInf];
-    var layout = {
-      xaxis: {title:"Year"},
-      yaxis: {title:"Life Expectancy"},
-      yaxis2: {title:"Infant Mortality"}
-    }
-    Plotly.newPlot("lifeChart",lifePlot,layout);
-  });
-
-}
-
 //builds plots of regression analysis
 function regressionChart(vaccine, country) {
   var urlReg = "/regression/"+vaccine+"/"+country;
@@ -70,10 +9,10 @@ function regressionChart(vaccine, country) {
     var vax_cov = reg_result.vax_cov;
     var life_exp = reg_result.life_exp;
     var inf_mort = reg_result.int_mort;
-    var fit_string_life = `Life Expectancy = ${reg_result.life_int} + ${reg_result.life_slope}*Vaccination Coverage`;
-    var fit_string_life_short = `L = ${reg_result.life_int} + ${reg_result.life_slope}*VC`;
+    var fit_string_life = `Life Expectancy = ${reg_result.life_int.toFixed(2)} + ${reg_result.life_slope}*Vaccination Coverage`;
+    var fit_string_life_short = `L = ${reg_result.life_int.toFixed(2)} + ${reg_result.life_slope.toFixed(2)}*VC`;
     var fit_string_inf = `Infant Mortality = ${reg_result.inf_int} + ${reg_result.inf_slope}*Vaccination Coverage`;
-    var fit_string_inf_short = `I = ${reg_result.inf_int} + ${reg_result.inf_slope}*VC`;
+    var fit_string_inf_short = `I = ${reg_result.inf_int.toFixed(2)} + ${reg_result.inf_slope.toFixed(2)}*VC`;
     var life_fit = reg_result.life_fit;
     var inf_fit = reg_result.inf_fit;
     var life_exp = reg_result.life_exp;
@@ -233,7 +172,7 @@ function init() {
     // console.log("First Country ", firstCountry);
     currentCountry = firstCountry;
     // console.log("inside current country "+currentCountry)
-  buildCharts(currentVax, currentCountry);
+  // buildCharts(currentVax, currentCountry);
   regressionChart(currentVax, currentCountry);
 });
 });
@@ -243,14 +182,14 @@ function vaxChanged(newVax) {
 //   // Fetch new data each time a new sample is selected 
   currentVax = newVax;
   console.log("Function vaxChanged, newVax: "+newVax)
-  buildCharts(newVax, currentCountry);
+  // buildCharts(newVax, currentCountry);
   regressionChart(currentVax, currentCountry);
 }
 
 function countryChanged(newCountry){
   console.log("Function countryChanged, newCountry: "+newCountry)
   currentCountry = newCountry;
-  buildCharts(currentVax, newCountry);
+  // buildCharts(currentVax, newCountry);
   regressionChart(currentVax, currentCountry);
 }
 
