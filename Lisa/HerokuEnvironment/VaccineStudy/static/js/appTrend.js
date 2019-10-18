@@ -50,13 +50,14 @@ function buildCharts(vax, country) {
     traceInf = {
       x: year,
       y:infMort,
+      yaxis: 'y2',
       name: "Infant Mortality"
     }
     lifePlot = [traceLife,traceInf];
     var layout = {
       title: "Life Expectancy and Infant Mortality",
       margin: {
-        l: 50, r: 70, b: 50, t: 50, pad: 2
+        l: 50, r: 100, b: 50, t: 50, pad: 2
       },
       xaxis: {title:"Year"},
       yaxis: {title:"Life Expectancy"},
@@ -64,7 +65,8 @@ function buildCharts(vax, country) {
         title:"Infant Mortality",
         overlaying: 'y',
         side: 'right'}
-    }
+      // legend: {orientation = "h"}
+      }
     Plotly.newPlot("lifeChart",lifePlot,layout);
   });
 
