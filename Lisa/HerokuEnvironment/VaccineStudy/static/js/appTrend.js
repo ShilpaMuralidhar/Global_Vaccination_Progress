@@ -14,9 +14,6 @@ function buildCharts(vax, country) {
        coverage.push(selection[i].Coverage);
     }
 
-    // console.log("buildCharts, data from url: "+(selection));
-    // console.log("buildCharts, data from url: "+selection[0].Country);
-    // console.log("buildCharts year: " +year);
     traceVax = {
       x: year,
       y: coverage

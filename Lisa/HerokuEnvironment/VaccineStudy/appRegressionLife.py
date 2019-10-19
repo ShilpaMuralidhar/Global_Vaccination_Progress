@@ -148,8 +148,6 @@ def regressionfit(vaccine, country):
             covTup.append(float(str(tup[7])))
     tup_df = pd.DataFrame(zip(countryTup, yearTup, lifExpTup, vaxTup, covTup), columns = ["Country","Year","Life_Expectancy","Vaccine","Coverage"])
 
-    # country = "Afghanistan"
-    # vax = "BCG"
 
     #filter the data on selected country and vaccination
     vax_life_country = tup_df[tup_df["Country"] == country]
