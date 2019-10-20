@@ -4,15 +4,15 @@
 
 
 ## Team members: Shilpa Muralidhar, Lisa Cannon, Brian Labelle, 
-# Technical Consultant: Matt Hawley
+## Technical Consultant: Matt Hawley
 
-## Data:
+# Data:
 Unicef Immunization percentages by country over the recent 40 years. Data on 15 vaccines. Sanitation, hygiene, and water supply measures.
 
-## Goal:
+# Goal:
 The goal of this project is to collect, visualize, and analyze the percent to people vaccinated in each country worldwide. We want to answer 1. how percent immunized changed over, 2. how percent immunized is distributed worldwide, and 3. Does there exist a relationship between percent immunized and life expectancy or infant mortality.
 
-## Inspiration:
+# Inspiration:
 Our inspiration for choosing this topic is Shilpa’s background in immunization research and her ongoing passion for learning more about the influence of immunization to world health. Some visualization inspiration we found include:
 https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organization/unicef-data
 
@@ -72,7 +72,7 @@ Give an example
 Add additional notes about how to deploy this on a live system
 
 ## Tools that were used to built this project:
-
+```
 Postgres pgAdmin v4.9 - SQL Table creation on Heroku
 Adobe DreamWeaver v19.2.1 - Management & development of HTML files.
 Adobe Premiere Rush v1.2.8 - Video editing
@@ -83,6 +83,8 @@ GitHub Desktop v2.2.1 - sharing code
 
 Heroku - Platform as a Service - hobby basic plan for 10,000,000 rows of data.
 Heroku - PostGres Add-on v11 Data Store
+```
+
 
 
 
