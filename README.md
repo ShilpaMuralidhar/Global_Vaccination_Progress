@@ -16,6 +16,24 @@ The goal of this project is to collect, visualize, and analyze the percent to pe
 Our inspiration for choosing this topic is Shilpa’s background in immunization research and her ongoing passion for learning more about the influence of immunization to world health. Some visualization inspiration we found include:
 https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organization/unicef-data
 
+
+# Conclusion:
+```
+* In general, a give vaccination has a positive relationship with life expectancy and a negative relationship with infant mortality.
+* When data is complete, linear regression fits look promising but the assumption of equal variance is violated.
+* More questions are raised… More analysis is needed.
+```
+
+# What’s next for analysis?:
+```
+* Compare vaccination coverage geographically to see if regional trends exist.
+* Regression analysis: Automate the process of determining a variance stabilizing transformation when needed.
+* Regression analysis: Automate outlier detection.
+* Look at other measures of health and wellbeing.
+* Incorporate other factors that influence health and conduct a multiple linear regression analysis.
+
+```
+
 ### Prerequisites
 
 ```
@@ -73,16 +91,17 @@ Add additional notes about how to deploy this on a live system
 
 ## Tools that were used to built this project:
 ```
-Postgres pgAdmin v4.9 - SQL Table creation on Heroku
-Adobe DreamWeaver v19.2.1 - Management & development of HTML files.
-Adobe Premiere Rush v1.2.8 - Video editing
-Adobe Fireworks CS6 - Graphic editing
-Visual Studio Code v1.39.2 - code development
-WinMerge v2.16.4 - easy side by side code comparison
-GitHub Desktop v2.2.1 - sharing code
+* Visual Studio Code v1.39.2 - code development
+* Adobe DreamWeaver v19.2.1 - Management & development of HTML files.
+* Postgres pgAdmin v4.9 - SQL Table creation on Heroku
+* Adobe Fireworks CS6 - Graphic editing
 
-Heroku - Platform as a Service - hobby basic plan for 10,000,000 rows of data.
-Heroku - PostGres Add-on v11 Data Store
+* Adobe Premiere Rush v1.2.8 - Video editing
+* WinMerge v2.16.4 - easy side by side code comparison
+* GitHub Desktop v2.2.1 - sharing code
+
+* Heroku - Platform as a Service - hobby basic plan for 10,000,000 rows of data.
+* Heroku - PostGres Add-on v11 Data Store
 ```
 
 
