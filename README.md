@@ -59,8 +59,7 @@ gunicorn 19.9.0
 Python code was developed mainly utilizing Microsoft Visual Studio with Python Flask.
 4 app.py were created to manage a very ambitious 9 different visilisations.
 
-[Muracan](images/chart001.jpg)
-
+![Muracan](images/chart001.jpg)
 
 	* muracantrend.herokuapp.com | World Immunization Progress Chart
 			- Vaccination Coverage 
@@ -77,7 +76,7 @@ Python code was developed mainly utilizing Microsoft Visual Studio with Python F
 			- Infant Mortality Residual Plot
 			
 			
-[Muracan](images/chart002.jpg)
+![Muracan](images/chart002.jpg)
 
 ```
 Give the example
