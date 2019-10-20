@@ -3,9 +3,7 @@
 ![Muracan](images/rice-cookers-project2.jpg)
 
 
-## Proposal | World Immunization Progress
-
-# Team members: Lisa Cannon, Brian Labelle, Shilpa Muralidhar
+## Team members: Shilpa Muralidhar, Lisa Cannon, Brian Labelle, 
 # Technical Consultant: Matt Hawley
 
 ## Data:
@@ -20,6 +18,7 @@ https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organ
 
 ### Prerequisites
 
+```
 python-3.6.2
 Flask-PyMongo 2.3.0
 Flask-SQLAlchemy 2.4.0
@@ -28,11 +27,6 @@ Jinja2 2.10.1
 psycopg2 2.8.3
 SQLAlchemy 1.2.19
 gunicorn 19.9.0
-
-
-
-```
-Give examples
 ```
 
 ### Installing
