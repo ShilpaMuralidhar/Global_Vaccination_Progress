@@ -23,6 +23,11 @@ The goal of this project is to collect, visualize, and analyze the percent to pe
 Our inspiration for choosing this topic is Shilpa’s background in immunization research and her ongoing passion for learning more about the influence of immunization to world health. Some visualization inspiration we found include:
 https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organization/unicef-data
 
+# Aux Web pages.
+
+To fully round out the application, additional content was generated:
+	* a brief history of the Timeline / History of Vaccines  ( http://muracan2.herokuapp.com/static/project-history.html )
+	* abridged content about the back story of Project 2 ( http://muracan2.herokuapp.com/static/project-muracan.html )
 
 # Conclusion:
 ```
