@@ -88,14 +88,13 @@ Python code was developed mainly utilizing Microsoft Visual Studio with Python F
 				- houses 70k rows of PostGres Unicef Data
 				- lat long data by country for potential map visualizations
 				
-			( kindly note that this main heroku is broken from any future UI updates because of some sort of conflict)
-			
-			
+
+( kindly note that this main heroku is broken from any future UI updates because of some sort of conflict)			
 ![Muracan](images/chart002.jpg)
 
 ## Deployment
 
-Due to the time constrains to get 4 different app.py applications to function on Heroku it was decided to modularize and setup 1 heroku per app.py and inter-connect them utilizing the hub & spoke philosophy. The theory was that at least we could build on the success as each app.py was deployed as compared to having a single 600+ line of code in a single app to mitigate troubleshooting python code on an unknown Heroku platform.
+Due to the time constrains to get 4 different app.py applications to function on Heroku it was decided to modularize and setup 1 heroku per app.py and inter-connect them utilizing the hub & spoke philosophy. The theory was that at least we could build on the success as each app.py was deployed as compared to having a single 600+ line of code in a single app to mitigate troubleshooting python code on an unknown Heroku platform and easily bolt on additional visualization as time permitted.
 
 
 ![Muracan](images/heroku-hub-spoke.jpg)
@@ -116,12 +115,14 @@ Due to the time constrains to get 4 different app.py applications to function on
 
 * Heroku - Platform as a Service - hobby basic plan for 10,000,000 rows of data.
 * Heroku - PostGres Add-on v11 Data Store
+
+* Ashton Responsive HTML Template from Theme Forest ( Envato.com )
+* several video files from Envato.com which were edited
 ```
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
+### Not Included in this project but were planned.
+	* [HighCharts.com](https://www.highcharts.com/maps/demo/all-maps)
+	
 
 # Heroku - Future Development
 ![Muracan](images/highchart-maps.jpg)
