@@ -89,7 +89,8 @@ Python code was developed mainly utilizing Microsoft Visual Studio with Python F
 				- lat long data by country for potential map visualizations
 				
 
-( kindly note that this main heroku is broken from any future UI updates because of some sort of conflict)			
+( kindly note that this main heroku is broken from any future UI updates because of some sort of conflict)	
+
 ![Muracan](images/chart002.jpg)
 
 ## Deployment
