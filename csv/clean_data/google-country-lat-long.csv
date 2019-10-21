@@ -1,0 +1,245 @@
+Country,Latitude,Longitude,Acronym
+Andorra,42.55,1.60,AD
+United Arab Emirates,23.42,53.85,AE
+Afghanistan,33.94,67.71,AF
+Antigua and Barbuda,17.06,-61.80,AG
+Anguilla,18.22,-63.07,AI
+Albania,41.15,20.17,AL
+Armenia,40.07,45.04,AM
+Netherlands Antilles,12.23,-69.06,AN
+Angola,-11.20,17.87,AO
+Antarctica,-75.25,-0.07,AQ
+Argentina,-38.42,-63.62,AR
+American Samoa,-14.27,-170.13,AS
+Austria,47.52,14.55,AT
+Australia,-25.27,133.78,AU
+Aruba,12.52,-69.97,AW
+Azerbaijan,40.14,47.58,AZ
+Bosnia and Herzegovina,43.92,17.68,BA
+Barbados,13.19,-59.54,BB
+Bangladesh,23.68,90.36,BD
+Belgium,50.50,4.47,BE
+Burkina Faso,12.24,-1.56,BF
+Bulgaria,42.73,25.49,BG
+Bahrain,25.93,50.64,BH
+Burundi,-3.37,29.92,BI
+Benin,9.31,2.32,BJ
+Bermuda,32.32,-64.76,BM
+Brunei,4.54,114.73,BN
+Bolivia,-16.29,-63.59,BO
+Brazil,-14.24,-51.93,BR
+Bahamas,25.03,-77.40,BS
+Bhutan,27.51,90.43,BT
+Bouvet Island,-54.42,3.41,BV
+Botswana,-22.33,24.68,BW
+Belarus,53.71,27.95,BY
+Belize,17.19,-88.50,BZ
+Canada,56.13,-106.35,CA
+Cocos [Keeling] Islands,-12.16,96.87,CC
+Congo [DRC],-4.04,21.76,CD
+Central African Republic,6.61,20.94,CF
+Congo [Republic],-0.23,15.83,CG
+Switzerland,46.82,8.23,CH
+Cote d'Ivoire,7.54,-5.55,CI
+Cook Islands,-21.24,-159.78,CK
+Chile,-35.68,-71.54,CL
+Cameroon,7.37,12.35,CM
+China,35.86,104.20,CN
+Colombia,4.57,-74.30,CO
+Costa Rica,9.75,-83.75,CR
+Cuba,21.52,-77.78,CU
+Cape Verde,16.00,-24.01,CV
+Christmas Island,-10.45,105.69,CX
+Cyprus,35.13,33.43,CY
+Czech Republic,49.82,15.47,CZ
+Germany,51.17,10.45,DE
+Djibouti,11.83,42.59,DJ
+Denmark,56.26,9.50,DK
+Dominica,15.41,-61.37,DM
+Dominican Republic,18.74,-70.16,DO
+Algeria,28.03,1.66,DZ
+Ecuador,-1.83,-78.18,EC
+Estonia,58.60,25.01,EE
+Egypt,26.82,30.80,EG
+Western Sahara,24.22,-12.89,EH
+Eritrea,15.18,39.78,ER
+Spain,40.46,-3.75,ES
+Ethiopia,9.15,40.49,ET
+Finland,61.92,25.75,FI
+Fiji,-16.58,179.41,FJ
+Falkland Islands [Islas Malvinas],-51.80,-59.52,FK
+Micronesia,7.43,150.55,FM
+Faroe Islands,61.89,-6.91,FO
+France,46.23,2.21,FR
+Gabon,-0.80,11.61,GA
+United Kingdom,55.38,-3.44,GB
+Grenada,12.26,-61.60,GD
+Georgia,42.32,43.36,GE
+French Guiana,3.93,-53.13,GF
+Guernsey,49.47,-2.59,GG
+Ghana,7.95,-1.02,GH
+Gibraltar,36.14,-5.35,GI
+Greenland,71.71,-42.60,GL
+Gambia,13.44,-15.31,GM
+Guinea,9.95,-9.70,GN
+Guadeloupe,17.00,-62.07,GP
+Equatorial Guinea,1.65,10.27,GQ
+Greece,39.07,21.82,GR
+South Georgia and the South Sandwich Islands,-54.43,-36.59,GS
+Guatemala,15.78,-90.23,GT
+Guam,13.44,144.79,GU
+Guinea-Bissau,11.80,-15.18,GW
+Guyana,4.86,-58.93,GY
+Gaza Strip,31.35,34.31,GZ
+Hong Kong,22.40,114.11,HK
+Heard Island and McDonald Islands,-53.08,73.50,HM
+Honduras,15.20,-86.24,HN
+Croatia,45.10,15.20,HR
+Haiti,18.97,-72.29,HT
+Hungary,47.16,19.50,HU
+Indonesia,-0.79,113.92,ID
+Ireland,53.41,-8.24,IE
+Israel,31.05,34.85,IL
+Isle of Man,54.24,-4.55,IM
+India,20.59,78.96,IN
+British Indian Ocean Territory,-6.34,71.88,IO
+Iraq,33.22,43.68,IQ
+Iran,32.43,53.69,IR
+Iceland,64.96,-19.02,IS
+Italy,41.87,12.57,IT
+Jersey,49.21,-2.13,JE
+Jamaica,18.11,-77.30,JM
+Jordan,30.59,36.24,JO
+Japan,36.20,138.25,JP
+Kenya,-0.02,37.91,KE
+Kyrgyzstan,41.20,74.77,KG
+Cambodia,12.57,104.99,KH
+Kiribati,-3.37,-168.73,KI
+Comoros,-11.88,43.87,KM
+Saint Kitts and Nevis,17.36,-62.78,KN
+North Korea,40.34,127.51,KP
+South Korea,35.91,127.77,KR
+Kuwait,29.31,47.48,KW
+Cayman Islands,19.51,-80.57,KY
+Kazakhstan,48.02,66.92,KZ
+Laos,19.86,102.50,LA
+Lebanon,33.85,35.86,LB
+Saint Lucia,13.91,-60.98,LC
+Liechtenstein,47.17,9.56,LI
+Sri Lanka,7.87,80.77,LK
+Liberia,6.43,-9.43,LR
+Lesotho,-29.61,28.23,LS
+Lithuania,55.17,23.88,LT
+Luxembourg,49.82,6.13,LU
+Latvia,56.88,24.60,LV
+Libya,26.34,17.23,LY
+Morocco,31.79,-7.09,MA
+Monaco,43.75,7.41,MC
+Moldova,47.41,28.37,MD
+Montenegro,42.71,19.37,ME
+Madagascar,-18.77,46.87,MG
+Marshall Islands,7.13,171.18,MH
+Macedonia [FYROM],41.61,21.75,MK
+Mali,17.57,-4.00,ML
+Myanmar [Burma],21.91,95.96,MM
+Mongolia,46.86,103.85,MN
+Macau,22.20,113.54,MO
+Northern Mariana Islands,17.33,145.38,MP
+Martinique,14.64,-61.02,MQ
+Mauritania,21.01,-10.94,MR
+Montserrat,16.74,-62.19,MS
+Malta,35.94,14.38,MT
+Mauritius,-20.35,57.55,MU
+Maldives,3.20,73.22,MV
+Malawi,-13.25,34.30,MW
+Mexico,23.63,-102.55,MX
+Malaysia,4.21,101.98,MY
+Mozambique,-18.67,35.53,MZ
+Namibia,-22.96,18.49,NA
+New Caledonia,-20.90,165.62,NC
+Niger,17.61,8.08,NE
+Norfolk Island,-29.04,167.95,NF
+Nigeria,9.08,8.68,NG
+Nicaragua,12.87,-85.21,NI
+Netherlands,52.13,5.29,NL
+Norway,60.47,8.47,NO
+Nepal,28.39,84.12,NP
+Nauru,-0.52,166.93,NR
+Niue,-19.05,-169.87,NU
+New Zealand,-40.90,174.89,NZ
+Oman,21.51,55.92,OM
+Panama,8.54,-80.78,PA
+Peru,-9.19,-75.02,PE
+French Polynesia,-17.68,-149.41,PF
+Papua New Guinea,-6.31,143.96,PG
+Philippines,12.88,121.77,PH
+Pakistan,30.38,69.35,PK
+Poland,51.92,19.15,PL
+Saint Pierre and Miquelon,46.94,-56.27,PM
+Pitcairn Islands,-24.70,-127.44,PN
+Puerto Rico,18.22,-66.59,PR
+Palestinian Territories,31.95,35.23,PS
+Portugal,39.40,-8.22,PT
+Palau,7.51,134.58,PW
+Paraguay,-23.44,-58.44,PY
+Qatar,25.35,51.18,QA
+Reunion,-21.12,55.54,RE
+Romania,45.94,24.97,RO
+Serbia,44.02,21.01,RS
+Russia,61.52,105.32,RU
+Rwanda,-1.94,29.87,RW
+Saudi Arabia,23.89,45.08,SA
+Solomon Islands,-9.65,160.16,SB
+Seychelles,-4.68,55.49,SC
+Sudan,12.86,30.22,SD
+Sweden,60.13,18.64,SE
+Singapore,1.35,103.82,SG
+Saint Helena,-24.14,-10.03,SH
+Slovenia,46.15,15.00,SI
+Svalbard and Jan Mayen,77.55,23.67,SJ
+Slovakia,48.67,19.70,SK
+Sierra Leone,8.46,-11.78,SL
+San Marino,43.94,12.46,SM
+Senegal,14.50,-14.45,SN
+Somalia,5.15,46.20,SO
+Suriname,3.92,-56.03,SR
+Sao Tome and Principe,0.19,6.61,ST
+El Salvador,13.79,-88.90,SV
+Syria,34.80,39.00,SY
+Swaziland,-26.52,31.47,SZ
+Turks and Caicos Islands,21.69,-71.80,TC
+Chad,15.45,18.73,TD
+French Southern Territories,-49.28,69.35,TF
+Togo,8.62,0.82,TG
+Thailand,15.87,100.99,TH
+Tajikistan,38.86,71.28,TJ
+Tokelau,-8.97,-171.86,TK
+Timor-Leste,-8.87,125.73,TL
+Turkmenistan,38.97,59.56,TM
+Tunisia,33.89,9.54,TN
+Tonga,-21.18,-175.20,TO
+Turkey,38.96,35.24,TR
+Trinidad and Tobago,10.69,-61.22,TT
+Tuvalu,-7.11,177.65,TV
+Taiwan,23.70,120.96,TW
+Tanzania,-6.37,34.89,TZ
+Ukraine,48.38,31.17,UA
+Uganda,1.37,32.29,UG
+United States,37.09,-95.71,US
+Uruguay,-32.52,-55.77,UY
+Uzbekistan,41.38,64.59,UZ
+Vatican City,41.90,12.45,VA
+Saint Vincent and the Grenadines,12.98,-61.29,VC
+Venezuela,6.42,-66.59,VE
+British Virgin Islands,18.42,-64.64,VG
+U.S. Virgin Islands,18.34,-64.90,VI
+Vietnam,14.06,108.28,VN
+Vanuatu,-15.38,166.96,VU
+Wallis and Futuna,-13.77,-177.16,WF
+Samoa,-13.76,-172.10,WS
+Kosovo,42.60,20.90,XK
+Yemen,15.55,48.52,YE
+Mayotte,-12.83,45.17,YT
+South Africa,-30.56,22.94,ZA
+Zambia,-13.13,27.85,ZM
+Zimbabwe,-19.02,29.15,ZW
