@@ -23,7 +23,7 @@ The goal of this project is to collect, visualize, and analyze the percent to pe
 Our inspiration for choosing this topic is Shilpa’s background in immunization research and her ongoing passion for learning more about the influence of immunization to world health. Some visualization inspiration we found include:
 https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organization/unicef-data
 
-
+ 
 # Conclusion:
 ```
 * Vaccination has a positive relationship with life expectancy and a negative relationship with infant mortality.
@@ -174,9 +174,9 @@ https://www.highcharts.com/maps/demo/all-maps
 
 ![Muracan](images/heroku-dataclips005.jpg)
 
-
 ## Links
 
  http://muracan2.herokuapp.com/
+
 
 
