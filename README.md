@@ -23,12 +23,22 @@ The goal of this project is to collect, visualize, and analyze the percent to pe
 Our inspiration for choosing this topic is Shilpa’s background in immunization research and her ongoing passion for learning more about the influence of immunization to world health. Some visualization inspiration we found include:
 https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organization/unicef-data
 
-# Aux Web pages.
 
-To fully round out the application, additional content was generated:
+# Data cleaning: 
 
- - a brief history of the Timeline / History of Vaccines  ( http://muracan2.herokuapp.com/static/project-history.html )
- - abridged content about the back story of Project 2 ( http://muracan2.herokuapp.com/static/project-muracan.html )
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Conclusion:
 ```
@@ -49,14 +59,22 @@ To fully round out the application, additional content was generated:
 
 -----------------------------------------------
 
-# Data Management | Data Cleaning
+# Data Management / Cleaning / Flask Coding
 
 ![Muracan](images/pgadmin-wuenic-table.jpg)
 
-A huge amount of effort was done to ensure that the data was clean. Python Pandas was used to clean any missing values, format data, clean out outliers and analyze which data would be used. It was then pushed into PostGres from Pandas. At first it was pushed in via CSV files to be able to architect the entire technology stack as more of a proof of concept. But we later were able to push the data from Pandas to PostGres directly.
+Data from both sources, UNICEF and World Bank, were joined with an outer merge using pandas to determine which countries from World Bank needed tobe renamed to match the naming used by UNICEF.  Only countries that appear in both data sets were kept. The vaccination data was restructured using a loop to take each year column and stack the information so that year is a single column and the vaccination coverage percent was another column.  Missing values from thestacked data were removed. The infant mortality and life expectancy data were merged into a single data set.  Primary and merge key values were added.
 
 ![Muracan](images/pgadmin-infexpmort-table.jpg)
 
+# Python Flask coding: 
+Created the framework of the app.py, template/index.html, static/js/app.js files to connect to the ProgresSQL database and create a hello world template to build on.  
+
+# Time Series Visualization:  
+Created drop downs to allow a user to choose a vaccine and a country.  Pulled and filtered, creating a path to store jsonified data.  Generated Plotly time series line graphs of filtered data.
+
+# Analysis:  
+As with the time series visualization, drops downs allowed the user to choose a vaccine and country, and the filtered data was store in a path defined in app.py. Conducted regression analysis on the filter data in python using SciPy. Defined a path in app.py to store jsonified regression analysis results. Regression fitplot and related plots to check assumptions were created using Plotly.  Provided description of regression analysis to add to webpage.
 
 -----------------------------------------------
 
@@ -108,6 +126,14 @@ Python code was developed mainly utilizing Microsoft Visual Studio with Python F
 				
 
 ( kindly note that muracan.herokuapp.com is broken from any future UI updates because of some sort of conflict)	
+
+
+# Aux Web pages.
+
+To fully round out the application, additional content was generated:
+
+ - a brief history of the Timeline / History of Vaccines  ( http://muracan2.herokuapp.com/static/project-history.html )
+ - abridged content about the back story of Project 2 ( http://muracan2.herokuapp.com/static/project-muracan.html )
 
 ![Muracan](images/chart002.jpg)
 
