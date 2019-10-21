@@ -27,8 +27,8 @@ https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organ
 
 To fully round out the application, additional content was generated:
 
-	* a brief history of the Timeline / History of Vaccines  ( http://muracan2.herokuapp.com/static/project-history.html )
-	* abridged content about the back story of Project 2 ( http://muracan2.herokuapp.com/static/project-muracan.html )
+ - a brief history of the Timeline / History of Vaccines  ( http://muracan2.herokuapp.com/static/project-history.html )
+ - abridged content about the back story of Project 2 ( http://muracan2.herokuapp.com/static/project-muracan.html )
 
 # Conclusion:
 ```
