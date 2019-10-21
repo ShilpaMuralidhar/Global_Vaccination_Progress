@@ -41,6 +41,10 @@ https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organ
 
 ```
 
+-----------------------------------------------
+# TECHNOLOGY UTILIZED:
+![Muracan](images/heroku-postgres.jpg)
+
 ### Prerequisites
 
 ```
@@ -56,12 +60,13 @@ gunicorn 19.9.0
 
 ### Collaborative Coding Environment
 
-Python code was developed mainly utilizing Microsoft Visual Studio with Python Flask.
-4 app.py were created to manage a very ambitious 9 different visilisations.
+Python code was developed mainly utilizing Microsoft Visual Studio with Python Flask. 
+4 app.py were created to manage a very ambitious 9 different visualizations.  
 
 ![Muracan](images/chart001.jpg)
+![Muracan](images/chart002.jpg)
 
-	* muracantrend.herokuapp.com | World Immunization Progress Chart
+	* muracantrend.herokuapp.com | World Immunization Trend Chart
 			- Vaccination Coverage 
 			- Life Expectancy / Infant Mortality 
 
@@ -70,55 +75,30 @@ Python code was developed mainly utilizing Microsoft Visual Studio with Python F
 			- Life Expectancy Normal Q-Q Plot
 			- Life Expectancy Residual Plot
 			
-	* http://muracaninfant.herokuapp.com/ | Infant Mortality Regression
+	* muracaninfant.herokuapp.com | Infant Mortality Regression
 			- Infant MortalityLinear Regression Fit
 			- Infant Mortality Normal Q-Q Plot
 			- Infant Mortality Residual Plot
 			
+	* muracan2.herokuapp.com | World Immunization Progress Chart
+			- main app.py to launch the main UI Web App
+
+	* muracan.herokuapp.com | World Immunization Progress Chart
+			- original heroku web app that still 
+				- houses 70k rows of PostGres Unicef Data
+				- lat long data by country for potential map visualizations
+				
+			( kindly note that this main heroku is broken from any future UI updates because of some sort of conflict)
+			
 			
 ![Muracan](images/chart002.jpg)
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
 Due to the time constrains to get 4 different app.py applications to function on Heroku it was decided to modularize and setup 1 heroku per app.py and inter-connect them utilizing the hub & spoke philosophy. The theory was that at least we could build on the success as each app.py was deployed as compared to having a single 600+ line of code in a single app to mitigate troubleshooting python code on an unknown Heroku platform.
 
 
-[Muracan](images/heroku-hub-spoke.jpg)
-
-
-
+![Muracan](images/heroku-hub-spoke.jpg)
 
 
 
@@ -138,50 +118,34 @@ Due to the time constrains to get 4 different app.py applications to function on
 * Heroku - PostGres Add-on v11 Data Store
 ```
 
-
-
-
-
-
-
-
-
-
-
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 
-# Heroku - Platform as a Service | Thinking Big.
+# Heroku - Future Development
+![Muracan](images/highchart-maps.jpg)
 
-Ambisoucly 
+An ambitious attempt was made to leverage the Heroku platform by using it’s add on data store and other misc technologies. From a project software architecture perspective, it was thought that exploiting the built in JSON URL feature would be extremely a great future enhancement. Due to time limitation muracanmaps.herokuapp.com was never completed. 
 
-[Muracan](images/heroku-hub-spoke.jpg)
+![Muracan](images/heroku-dataclips001.jpg)
 
-muracanlife.herokuapp.com - manages the Life Expectancy Regression
+![Muracan](images/heroku-dataclips002.jpg)
 
-## Contributing
+The idea was to write SQL code utilizing latitude and longitude data via a primary key of Country Name to  with the UNICEF data to possibly display the vaccinated populate versus the total population and / or many other possible types of mapping visualizations. 
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+![Muracan](images/heroku-dataclips003.jpg)
+![Muracan](images/heroku-dataclips004.jpg)
 
-## Versioning
+Priority was set to ensure that the primary data analytics charts were successfully being displayed and the maps would be secondary if time permitted. Several attempts with our technical consultant was made to integrate the JSON URL with the HighCharts.com all maps.
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+https://www.highcharts.com/maps/demo/all-maps
 
-## Authors
+![Muracan](images/heroku-dataclips005.jpg)
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+## Links
 
-## License
+ [](http://muracan2.herokuapp.com/) 
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
