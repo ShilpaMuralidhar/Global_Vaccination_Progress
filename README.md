@@ -13,11 +13,11 @@ Unicef Immunization percentages by country over the recent 40 years. Data on 15 
 The goal of this project is to collect, visualize, and analyze the percent to people vaccinated in each country worldwide. 
 
 	We want to answer...
-	```
+	
 	1. how percent immunized changed over, 
 	2. how percent immunized is distributed worldwide, and 
 	3. Does there exist a relationship between percent immunized and life expectancy or infant mortality.
-	```
+	
 	
 # Inspiration:
 Our inspiration for choosing this topic is Shilpa’s background in immunization research and her ongoing passion for learning more about the influence of immunization to world health. Some visualization inspiration we found include:
@@ -26,7 +26,7 @@ https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organ
 
 # Conclusion:
 ```
-* In general, a give vaccination has a positive relationship with life expectancy and a negative relationship with infant mortality.
+* Vaccination has a positive relationship with life expectancy and a negative relationship with infant mortality.
 * When data is complete, linear regression fits look promising but the assumption of equal variance is violated.
 * More questions are raised… More analysis is needed.
 ```
@@ -47,7 +47,7 @@ https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organ
 
 ![Muracan](images/pgadmin-wuenic-table.jpg)
 
-A huge amount of effort was done to ensure that the data was clean. Python Pandas was used to clean any missing values, format data, clean out outliers and analyze which data would be used. It was then pushed into PostGres from Pandas. At first it was pushed in via CSV files to be able to architect the entire technology stack as more of a proof of concept. But we later were able to push the data from Pandas to PostGres.
+A huge amount of effort was done to ensure that the data was clean. Python Pandas was used to clean any missing values, format data, clean out outliers and analyze which data would be used. It was then pushed into PostGres from Pandas. At first it was pushed in via CSV files to be able to architect the entire technology stack as more of a proof of concept. But we later were able to push the data from Pandas to PostGres directly.
 
 ![Muracan](images/pgadmin-infexpmort-table.jpg)
 
@@ -73,7 +73,7 @@ gunicorn 19.9.0
 ### Collaborative Coding Environment
 
 Python code was developed mainly utilizing Microsoft Visual Studio with Python Flask. 
-4 app.py were created to manage a very ambitious 9 different visualizations. ( map visualizations were not completed.) 
+4 app.py were created to manage 9 different visualizations. ( map visualizations were not completed.) 
 
 ![Muracan](images/chart001.jpg)
 ![Muracan](images/chart002.jpg)
@@ -88,7 +88,7 @@ Python code was developed mainly utilizing Microsoft Visual Studio with Python F
 			- Life Expectancy Residual Plot
 			
 	* muracaninfant.herokuapp.com | Infant Mortality Regression
-			- Infant MortalityLinear Regression Fit
+			- Infant Mortality Linear Regression Fit
 			- Infant Mortality Normal Q-Q Plot
 			- Infant Mortality Residual Plot
 			
@@ -107,7 +107,7 @@ Python code was developed mainly utilizing Microsoft Visual Studio with Python F
 
 ## Deployment
 
-Due to the time constrains to get 4 different app.py applications to function on Heroku it was decided to modularize and setup 1 heroku per app.py and inter-connect them utilizing the hub & spoke philosophy. The theory was that at least we could build on the success as each app.py was deployed as compared to having a single 600+ line of code in a single app to mitigate troubleshooting python code on an unknown Heroku platform and easily bolt on additional visualization as time permitted.
+Due to the time constraints to get 4 different app.py applications to function on Heroku, it was decided to modularize and setup 1 heroku per app.py and inter-connect them utilizing the hub & spoke philosophy. The theory was that at least we could build on the success as each app.py was deployed as compared to having a single 600+ line of code in a single app to mitigate troubleshooting python code on an unknown Heroku platform and easily bolt on additional visualization as time permitted.
 
 
 ![Muracan](images/heroku-hub-spoke.jpg)
@@ -135,12 +135,14 @@ Due to the time constrains to get 4 different app.py applications to function on
 
 ### Not Included in this project but were planned.
 	* [HighCharts.com](https://www.highcharts.com/maps/demo/all-maps)
+	* Heroku Dataclips : SQL
+	* Heroku Dataclips : JSON
 	
 
 # Heroku - Future Development
 ![Muracan](images/highchart-maps.jpg)
 
-An ambitious attempt was made to leverage the Heroku platform by using it’s add on data store and other misc technologies. From a project software architecture perspective, it was thought that exploiting the built in JSON URL feature would be extremely a great future enhancement. Due to time limitation muracanmaps.herokuapp.com was never completed. 
+An attempt was made to leverage the Heroku platform by using it’s "add on" data store and other misc technologies. From a project software architecture perspective, it was thought that exploiting the built in JSON URL feature would be extremely a great future enhancement. Due to time limitation and complexity of back engineering the highcharts.com technology, muracanmaps.herokuapp.com was never completed. 
 
 ![Muracan](images/heroku-dataclips001.jpg)
 
@@ -159,6 +161,6 @@ https://www.highcharts.com/maps/demo/all-maps
 
 ## Links
 
- [](http://muracan2.herokuapp.com/) 
+ http://muracan2.herokuapp.com/
 
 
