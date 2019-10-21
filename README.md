@@ -42,6 +42,18 @@ https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organ
 ```
 
 -----------------------------------------------
+
+# Data Management | Data Cleaning
+
+![Muracan](images/pgadmin-wuenic-table.jpg)
+
+A huge amount of effort was done to ensure that the data was clean. Python Pandas was used to clean any missing values, format data, clean out outliers and analyze which data would be used. It was then pushed into PostGres from Pandas. At first it was pushed in via CSV files to be able to architect the entire technology stack as more of a proof of concept. But we later were able to push the data from Pandas to PostGres.
+
+![Muracan](images/pgadmin-infexpmort-table.jpg)
+
+
+-----------------------------------------------
+
 # TECHNOLOGY UTILIZED:
 ![Muracan](images/heroku-postgres.jpg)
 
@@ -61,7 +73,7 @@ gunicorn 19.9.0
 ### Collaborative Coding Environment
 
 Python code was developed mainly utilizing Microsoft Visual Studio with Python Flask. 
-4 app.py were created to manage a very ambitious 9 different visualizations.  
+4 app.py were created to manage a very ambitious 9 different visualizations. ( map visualizations were not completed.) 
 
 ![Muracan](images/chart001.jpg)
 ![Muracan](images/chart002.jpg)
@@ -89,7 +101,7 @@ Python code was developed mainly utilizing Microsoft Visual Studio with Python F
 				- lat long data by country for potential map visualizations
 				
 
-( kindly note that this main heroku is broken from any future UI updates because of some sort of conflict)	
+( kindly note that muracan.herokuapp.com is broken from any future UI updates because of some sort of conflict)	
 
 ![Muracan](images/chart002.jpg)
 
@@ -118,7 +130,7 @@ Due to the time constrains to get 4 different app.py applications to function on
 * Heroku - PostGres Add-on v11 Data Store
 
 * Ashton Responsive HTML Template from Theme Forest ( Envato.com )
-* several video files from Envato.com which were edited
+* several video files from Envato.com
 ```
 
 ### Not Included in this project but were planned.
@@ -136,7 +148,6 @@ An ambitious attempt was made to leverage the Heroku platform by using it’s ad
 
 The idea was to write SQL code utilizing latitude and longitude data via a primary key of Country Name to  with the UNICEF data to possibly display the vaccinated populate versus the total population and / or many other possible types of mapping visualizations. 
 
-![Muracan](images/heroku-dataclips003.jpg)
 ![Muracan](images/heroku-dataclips004.jpg)
 
 Priority was set to ensure that the primary data analytics charts were successfully being displayed and the maps would be secondary if time permitted. Several attempts with our technical consultant was made to integrate the JSON URL with the HighCharts.com all maps.
