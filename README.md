@@ -24,22 +24,6 @@ Our inspiration for choosing this topic is Shilpa’s background in immunization
 https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organization/unicef-data
 
 
-# Data cleaning: 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Conclusion:
 ```
 * Vaccination has a positive relationship with life expectancy and a negative relationship with infant mortality.
@@ -47,7 +31,7 @@ https://unicef.shinyapps.io/wuenic_analytics/ and https://data.humdata.org/organ
 * More questions are raised… More analysis is needed.
 ```
 
-# What’s next for analysis?:
+# What’s next for analysis?:   
 ```
 * Compare vaccination coverage geographically to see if regional trends exist.
 * Regression analysis: Automate the process of determining a variance stabilizing transformation when needed.
